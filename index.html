@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylish Media Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #353b48;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color .3s ease-in-out;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      color: #f4f4f4;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      background: url('https://bigcreative.education/wp-content/uploads/2023/06/onur-binay-O2-EZNGZIyk-unsplash-1024x576.jpg') no-repeat center center / cover;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: .5em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .about, .projects, .contact {
+      height: 100vh;
+      padding: 80px 20px 20px;
+      max-width: 100%;
+      text-align: left;
+      background-color: #fff;
+      animation: fadeIn 1s ease-in-out;
+      overflow-y: auto;
+      display: none; /* Initially hidden */
+    }
+
+    .about h2, .projects h2, .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1em;
+      font-weight: 500;
+      color: #353b48;
+    }
+
+    .about p, .projects p, .contact p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 1em;
+    }
+
+    .about p:last-child, .projects p:last-child, .contact p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about img, .projects img, .contact img {
+      max-width: 100%;
+      margin: 20px 0;
+    }
+
+    .about .section, .projects .section, .contact .section {
+      margin-bottom: 40px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#" aria-label="Home" onclick="showSection('hero')">Home</a></li>
+        <li><a href="#" aria-label="About" onclick="showSection('about')">About</a></li>
+        <li><a href="#" aria-label="Projects" onclick="showSection('projects')">Projects</a></li>
+        <li><a href="#" aria-label="Contact Us" onclick="showSection('contact')">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to VividMosaic Media</h1>
+  </section>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <div class="section">
+      <p>We are a leading media company providing top-notch services in the industry. Our team of experts ensures the highest quality in every project we undertake using the best software available.</p>
+      <img src="https://blog.adobe.com/en/publish/2020/05/28/media_16b3b0de339a5aa325a34196c56343c8b18522cf8.png?width=750&format=png&optimize=medium" alt="Our Team">
+    </div>
+    <div class="section">
+      <h2>Our Mission</h2>
+      <p>We are an expanding company experiencing rapid growth, driven by our commitment to delivering exceptional quality work at competitive prices. Our dedication to excellence ensures that we consistently meet and exceed client expectations, establishing ourselves as leaders in our industry.</p>
+    </div>
+    <div class="section">
+      <h2>Join Us</h2>
+      <p>Follow us on TikTok to stay updated on the projects we're currently working on.</p>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>Our Projects</h2>
+    <div class="section">
+      <p>We are working on numerous exciting projects. Stay tuned for updates!</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <div class="section">
+      <p>Here's how you can reach us:</p>
+      <p>Email: contact@media.com</p>
+      <p>Phone: +123456789</p>
+      <p>Address: 123 Media Street, Media City</p>
+    </div>
+  </section>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelector('.hero').style.display = sectionId === 'hero' ? 'flex' : 'none';
+      document.querySelector('.about').style.display = sectionId === 'about' ? 'block' : 'none';
+      document.querySelector('.projects').style.display = sectionId === 'projects' ? 'block' : 'none';
+      document.querySelector('.contact').style.display = sectionId === 'contact' ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelector('nav ul li a.active')?.classList.remove('active');
+        this.classList.add('active');
+      });
+    });
+
+    // Smooth scrolling for better UX
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
