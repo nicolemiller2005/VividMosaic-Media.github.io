@@ -27,12 +27,6 @@
             scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
         header {
             height: 100vh;
             display: flex;
@@ -43,6 +37,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 0 20px;
         }
 
         header::before {
@@ -67,7 +62,7 @@
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 4rem; /* Adjusted for responsiveness */
             margin-bottom: 20px;
             color: var(--text-color);
             text-shadow: 3px 3px var(--accent-color);
@@ -75,7 +70,7 @@
         }
 
         .subtitle {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Adjusted for responsiveness */
             margin-bottom: 40px;
             color: var(--text-color);
             font-weight: 300;
@@ -83,8 +78,8 @@
         }
 
         .cta-button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 12px 24px;
+            font-size: 1rem;
             text-decoration: none;
             color: var(--text-color);
             background-color: var(--accent-color);
@@ -101,12 +96,12 @@
         }
 
         section {
-            padding: 100px 0;
+            padding: 100px 20px; /* Adjusted for responsiveness */
             position: relative;
         }
 
         .section-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem; /* Adjusted for responsiveness */
             margin-bottom: 60px;
             text-align: center;
             color: var(--accent-color);
@@ -116,13 +111,13 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for responsiveness */
             gap: 40px;
         }
 
         .skill-item {
             background: var(--primary-color);
-            padding: 40px;
+            padding: 20px;
             border: 2px solid var(--accent-color);
             text-align: center;
             transition: all 0.3s ease;
@@ -159,7 +154,7 @@
         }
 
         .timeline-item {
-            padding: 20px 40px;
+            padding: 20px;
             position: relative;
             background-color: inherit;
             width: 50%;
@@ -202,7 +197,7 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for responsiveness */
             gap: 40px;
         }
 
@@ -264,38 +259,89 @@
         }
 
         @media screen and (max-width: 768px) {
+            header {
+                padding: 0 10px;
+            }
+
             h1 {
-                font-size: 3.5rem;
+                font-size: 3rem; /* Further adjustment */
             }
 
             .subtitle {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
-            .timeline::after {
-                left: 31px;
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .skill-item {
+                padding: 15px;
+                font-size: 0.8rem;
             }
 
             .timeline-item {
                 width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                padding: 20px;
             }
 
             .timeline-item::after {
                 left: 15px;
             }
 
-            .left::after, .right::after {
-                left: 15px;
+            .contact-item {
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
             }
 
-            .right {
-                left: 0%;
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-item {
+                padding: 10px;
+                font-size: 0.7rem;
+            }
+
+            .timeline-item {
+                padding: 10px;
+            }
+
+            .timeline-item::after {
+                left: 10px;
+            }
+
+            .contact-item {
+                padding: 10px;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -403,3 +449,4 @@
     </main>
 </body>
 </html>
+
