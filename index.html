@@ -1,201 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stylish Media Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grimm & Whimsy Studios - Creative Visions Brought to Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Black+Ops+One&display=swap');
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+        :root {
+            --primary-color: #0d0d0d;
+            --secondary-color: #333333;
+            --accent-color: #b30000;
+            --text-color: #e0e0e0;
+            --bg-color: #090909;
+        }
 
-    header {
-      background-color: #353b48;
-      color: white;
-      padding: 10px;
-      position: fixed;
-      width: 100%;
-      z-index: 999;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        body, html {
+            font-family: 'UnifrakturCook', cursive;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: space-around;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      transition: color .3s ease-in-out;
-      font-weight: 500;
-    }
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('/mnt/data/brooksby.jpg') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    nav ul li a:hover {
-      color: #f4f4f4;
-    }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: url('https://bigcreative.education/wp-content/uploads/2023/06/onur-binay-O2-EZNGZIyk-unsplash-1024x576.jpg') no-repeat center center / cover;
-    }
+        header * {
+            position: relative;
+            z-index: 2;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: .5em;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+        h1, h2, h3 {
+            font-family: 'Black Ops One', sans-serif;
+            letter-spacing: 2px;
+        }
 
-    .about, .projects, .contact {
-      height: 100vh;
-      padding: 80px 20px 20px;
-      max-width: 100%;
-      text-align: left;
-      background-color: #fff;
-      animation: fadeIn 1s ease-in-out;
-      overflow-y: auto;
-      display: none; /* Initially hidden */
-    }
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            text-shadow: 3px 3px var(--accent-color);
+            animation: text-flicker 2s infinite alternate;
+        }
 
-    .about h2, .projects h2, .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1em;
-      font-weight: 500;
-      color: #353b48;
-    }
+        .subtitle {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            font-weight: 300;
+            animation: text-flicker 2s infinite alternate 1s;
+        }
 
-    .about p, .projects p, .contact p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #666;
-      margin-bottom: 1em;
-    }
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+            border: 2px solid var(--text-color);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: button-glow 2s infinite alternate;
+        }
 
-    .about p:last-child, .projects p:last-child, .contact p:last-child {
-      margin-bottom: 0;
-    }
+        .cta-button:hover {
+            background-color: var(--text-color);
+            color: var(--accent-color);
+        }
 
-    .about img, .projects img, .contact img {
-      max-width: 100%;
-      margin: 20px 0;
-    }
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
 
-    .about .section, .projects .section, .contact .section {
-      margin-bottom: 40px;
-    }
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--accent-color);
+            text-shadow: 2px 2px var(--text-color);
+            animation: text-flicker 2s infinite alternate;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
 
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-      }
-    }
-  </style>
+        .skill-item {
+            background: var(--primary-color);
+            padding: 40px;
+            border: 2px solid var(--accent-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: bounce-in 1s forwards;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px) rotate(3deg);
+            box-shadow: 5px 5px 15px rgba(179, 0, 0, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            animation: rotate-in 1s infinite alternate;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            animation: slide-in 1s forwards;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+            animation-delay: 0.5s;
+        }
+
+        .right {
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 30px;
+            background: var(--primary-color);
+            position: relative;
+            border: 2px solid var(--accent-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-item {
+            text-align: center;
+            animation: float-in 2s forwards;
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            animation: rotate-in 2s infinite alternate;
+        }
+
+        .contact-link {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(179, 0, 0, 0.5);
+        }
+
+        @keyframes text-flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes button-glow {
+            0% { box-shadow: 0 0 10px var(--accent-color); }
+            100% { box-shadow: 0 0 20px var(--accent-color); }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes rotate-in {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slide-in {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes float-in {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#" aria-label="Home" onclick="showSection('hero')">Home</a></li>
-        <li><a href="#" aria-label="About" onclick="showSection('about')">About</a></li>
-        <li><a href="#" aria-label="Projects" onclick="showSection('projects')">Projects</a></li>
-        <li><a href="#" aria-label="Contact Us" onclick="showSection('contact')">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>Grimm & Whimsy Studios</h1>
+        <p class="subtitle">Where Nightmares Become Dreams</p>
+        <a href="#contact" class="cta-button">Dare to Connect</a>
+    </header>
 
-  <section class="hero">
-    <h1>Welcome to VividMosaic Media</h1>
-  </section>
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <p>At Grimm & Whimsy Studios, we delve into the dark and twisted realms of imagination to bring you unparalleled animated experiences. With a penchant for the eerie and a flair for the fantastical, our studio has carved a niche in the animation industry for those who dare to dream differently.</p>
+            </div>
+        </section>
 
-  <section class="about">
-    <h2>About Us</h2>
-    <div class="section">
-      <p>We are a leading media company providing top-notch services in the industry. Our team of experts ensures the highest quality in every project we undertake using the best software available.</p>
-      <img src="https://blog.adobe.com/en/publish/2020/05/28/media_16b3b0de339a5aa325a34196c56343c8b18522cf8.png?width=750&format=png&optimize=medium" alt="Our Team">
-    </div>
-    <div class="section">
-      <h2>Our Mission</h2>
-      <p>We are an expanding company experiencing rapid growth, driven by our commitment to delivering exceptional quality work at competitive prices. Our dedication to excellence ensures that we consistently meet and exceed client expectations, establishing ourselves as leaders in our industry.</p>
-    </div>
-    <div class="section">
-      <h2>Join Us</h2>
-      <p>Follow us on TikTok to stay updated on the projects we're currently working on.</p>
-    </div>
-  </section>
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Our Dark Arts</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-pencil-alt skill-icon"></i>
+                        <h3>Character Design</h3>
+                        <p>Crafting unique, memorable characters that linger in your mind.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-film skill-icon"></i>
+                        <h3>Animation</h3>
+                        <p>Breathing life into sketches with fluid, hauntingly beautiful motion.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-palette skill-icon"></i>
+                        <h3>Art Direction</h3>
+                        <p>Creating visual styles that immerse audiences in fantastical worlds.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-magic skill-icon"></i>
+                        <h3>Storytelling</h3>
+                        <p>Weaving tales that captivate, haunt, and inspire.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="projects">
-    <h2>Our Projects</h2>
-    <div class="section">
-      <p>We are working on numerous exciting projects. Stay tuned for updates!</p>
-    </div>
-  </section>
+        <section id="history">
+            <div class="container">
+                <h2 class="section-title">Our Spooky Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>The Awakening</h3>
+                            <p>Founded in a dimly lit basement, our studio began with a handful of dreamers and a vision.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>The Rise</h3>
+                            <p>First recognition at the International Horror Film Festival</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>The Ascent</h3>
+                            <p>Expansion into feature films with our debut "The Cursed Forest," a box office surprise</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>The Revelation</h3>
+                            <p>Introduction of our unique animation style in the series "Gothic Tales," gaining a cult following</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>The Crescendo</h3>
+                            <p>Our feature film "Shadows of Yesterday" becomes a cult classic, praised for its unique visual style</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <div class="section">
-      <p>Here's how you can reach us:</p>
-      <p>Email: contact@media.com</p>
-      <p>Phone: +123456789</p>
-      <p>Address: 123 Media Street, Media City</p>
-    </div>
-  </section>
-
-  <script>
-    function showSection(sectionId) {
-      document.querySelector('.hero').style.display = sectionId === 'hero' ? 'flex' : 'none';
-      document.querySelector('.about').style.display = sectionId === 'about' ? 'block' : 'none';
-      document.querySelector('.projects').style.display = sectionId === 'projects' ? 'block' : 'none';
-      document.querySelector('.contact').style.display = sectionId === 'contact' ? 'block' : 'none';
-    }
-
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.querySelector('nav ul li a.active')?.classList.remove('active');
-        this.classList.add('active');
-      });
-    });
-
-    // Smooth scrolling for better UX
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Summon Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-crow contact-icon"></i>
+                        <span class="contact-link">ravens@grimmwhimsy.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram contact-icon"></i>
+                        <span class="contact-link">@grimmwhimsy</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-twitter contact-icon"></i>
+                        <span class="contact-link">@grimmwhimsy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
