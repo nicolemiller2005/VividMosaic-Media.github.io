@@ -3,450 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grimm & Whimsy Studios - Creative Visions Brought to Life</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>TransCinema Dreams</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Black+Ops+One&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=Pacifico&display=swap');
+        
         :root {
-            --primary-color: #0d0d0d;
-            --secondary-color: #333333;
-            --accent-color: #b30000;
-            --text-color: #e0e0e0;
-            --bg-color: #090909;
+            --primary-color: #2D2D2D;
+            --accent-color: #F5A9B8;
+            --secondary-accent: #5BCEFA;
+            --text-color: #FFFFFF;
+            --menu-bg: rgba(45, 45, 45, 0.9);
         }
-
-        body, html {
-            font-family: 'UnifrakturCook', cursive;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+        
+        * {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            box-sizing: border-box;
         }
-
-        header {
+        
+        body, html {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: url('/mnt/data/brooksby.jpg') center/cover no-repeat;
-            text-align: center;
+            justify-content: center;
+            background: url('/api/placeholder/1920/1080') no-repeat center center;
+            background-size: cover;
             position: relative;
-            overflow: hidden;
-            padding: 0 20px;
         }
-
-        header::before {
+        
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, rgba(245, 169, 184, 0.7), rgba(91, 206, 250, 0.7));
+        }
+        
+        .hero-content {
+            text-align: center;
+            position: relative;
             z-index: 1;
+            padding: 0 20px;
         }
-
-        header * {
-            position: relative;
-            z-index: 2;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Black Ops One', sans-serif;
-            letter-spacing: 2px;
-        }
-
+        
         h1 {
-            font-size: 4rem; /* Adjusted for responsiveness */
+            font-family: 'Pacifico', cursive;
+            font-size: 4.5em;
             margin-bottom: 20px;
-            color: var(--text-color);
-            text-shadow: 3px 3px var(--accent-color);
-            animation: text-flicker 2s infinite alternate;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-        .subtitle {
-            font-size: 1.5rem; /* Adjusted for responsiveness */
-            margin-bottom: 40px;
-            color: var(--text-color);
-            font-weight: 300;
-            animation: text-flicker 2s infinite alternate 1s;
+        
+        .tagline {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.5s;
         }
-
+        
         .cta-button {
-            padding: 12px 24px;
-            font-size: 1rem;
-            text-decoration: none;
-            color: var(--text-color);
+            display: inline-block;
+            padding: 15px 40px;
             background-color: var(--accent-color);
-            border: 2px solid var(--text-color);
-            transition: all 0.3s ease;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: button-glow 2s infinite alternate;
-        }
-
-        .cta-button:hover {
-            background-color: var(--text-color);
-            color: var(--accent-color);
-        }
-
-        section {
-            padding: 100px 20px; /* Adjusted for responsiveness */
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 2.5rem; /* Adjusted for responsiveness */
-            margin-bottom: 60px;
-            text-align: center;
-            color: var(--accent-color);
-            text-shadow: 2px 2px var(--text-color);
-            animation: text-flicker 2s infinite alternate;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for responsiveness */
-            gap: 40px;
-        }
-
-        .skill-item {
-            background: var(--primary-color);
-            padding: 20px;
-            border: 2px solid var(--accent-color);
-            text-align: center;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            animation: bounce-in 1s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        .skill-item:hover {
-            transform: translateY(-10px) rotate(3deg);
-            box-shadow: 5px 5px 15px rgba(179, 0, 0, 0.3);
+        
+        .cta-button:hover {
+            background-color: var(--secondary-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
-
-        .skill-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            animation: rotate-in 1s infinite alternate;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: var(--accent-color);
+        
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
             top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             padding: 20px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            animation: slide-in 1s forwards;
+            background-color: var(--menu-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
-        .timeline-item::after {
-            content: '';
+        
+        .nav-container .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+            color: var(--accent-color);
+            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            float: right;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: var(--menu-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: rgba(245, 169, 184, 0.2);
+        }
+        
+        /* Cute Elements */
+        .sparkle {
             position: absolute;
             width: 20px;
             height: 20px;
-            right: -10px;
-            background-color: var(--bg-color);
-            border: 2px solid var(--accent-color);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5A9B8'%3E%3Cpath d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.7;
+            animation: sparkle 2s ease-in-out infinite;
         }
-
-        .left {
-            left: 0;
-            animation-delay: 0.5s;
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
-
-        .right {
-            left: 50%;
-            animation-delay: 1s;
-        }
-
-        .right::after {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 30px;
-            background: var(--primary-color);
-            position: relative;
-            border: 2px solid var(--accent-color);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for responsiveness */
-            gap: 40px;
-        }
-
-        .contact-item {
-            text-align: center;
-            animation: float-in 2s forwards;
-        }
-
-        .contact-icon {
-            font-size: 3.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            animation: rotate-in 2s infinite alternate;
-        }
-
-        .contact-link {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            pointer-events: none;
-            cursor: default;
-        }
-
-        .contact-link:hover {
-            color: var(--accent-color);
-            text-shadow: 2px 2px 4px rgba(179, 0, 0, 0.5);
-        }
-
-        @keyframes text-flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes button-glow {
-            0% { box-shadow: 0 0 10px var(--accent-color); }
-            100% { box-shadow: 0 0 20px var(--accent-color); }
-        }
-
-        @keyframes bounce-in {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes rotate-in {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes slide-in {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes float-in {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @media screen and (max-width: 768px) {
-            header {
-                padding: 0 10px;
-            }
-
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
             h1 {
-                font-size: 3rem; /* Further adjustment */
+                font-size: 3em;
             }
-
-            .subtitle {
-                font-size: 1.2rem;
+            
+            .tagline {
+                font-size: 1.4em;
             }
-
-            .cta-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            
+            .nav-links {
+                display: none;
             }
-
-            .section-title {
-                font-size: 2rem;
+            
+            .menu-icon {
+                display: block;
+                float: right;
             }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .skill-item {
-                padding: 15px;
-                font-size: 0.8rem;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding: 20px;
-            }
-
-            .timeline-item::after {
-                left: 15px;
-            }
-
-            .contact-item {
-                padding: 15px;
-                font-size: 0.8rem;
+            
+            .dropdown-menu.active {
+                display: block;
             }
         }
-
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-item {
-                padding: 10px;
-                font-size: 0.7rem;
-            }
-
-            .timeline-item {
-                padding: 10px;
-            }
-
-            .timeline-item::after {
-                left: 10px;
-            }
-
-            .contact-item {
-                padding: 10px;
-                font-size: 0.7rem;
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Grimm & Whimsy Studios</h1>
-        <p class="subtitle">Where Nightmares Become Dreams</p>
-        <a href="#contact" class="cta-button">Dare to Connect</a>
-    </header>
+    <nav class="nav-container">
+        <a href="#" class="logo">TransCinema Dreams</a>
+        <div class="menu-icon">☰</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="dropdown-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-    <main>
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title">About Us</h2>
-                <p>At Grimm & Whimsy Studios, we delve into the dark and twisted realms of imagination to bring you unparalleled animated experiences. With a penchant for the eerie and a flair for the fantastical, our studio has carved a niche in the animation industry for those who dare to dream differently.</p>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>TransCinema Dreams</h1>
+            <p class="tagline">Where identity meets imagination on screen</p>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
 
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title">Our Dark Arts</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <i class="fas fa-pencil-alt skill-icon"></i>
-                        <h3>Character Design</h3>
-                        <p>Crafting unique, memorable characters that linger in your mind.</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-film skill-icon"></i>
-                        <h3>Animation</h3>
-                        <p>Breathing life into sketches with fluid, hauntingly beautiful motion.</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-palette skill-icon"></i>
-                        <h3>Art Direction</h3>
-                        <p>Creating visual styles that immerse audiences in fantastical worlds.</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-magic skill-icon"></i>
-                        <h3>Storytelling</h3>
-                        <p>Weaving tales that captivate, haunt, and inspire.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
 
-        <section id="history">
-            <div class="container">
-                <h2 class="section-title">Our Spooky Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>The Awakening</h3>
-                            <p>Founded in a dimly lit basement, our studio began with a handful of dreamers and a vision.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <h3>The Rise</h3>
-                            <p>First recognition at the International Horror Film Festival</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>The Ascent</h3>
-                            <p>Expansion into feature films with our debut "The Cursed Forest," a box office surprise</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <h3>The Revelation</h3>
-                            <p>Introduction of our unique animation style in the series "Gothic Tales," gaining a cult following</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>The Crescendo</h3>
-                            <p>Our feature film "Shadows of Yesterday" becomes a cult classic, praised for its unique visual style</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        menuIcon.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
 
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title">Summon Us</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fas fa-crow contact-icon"></i>
-                        <span class="contact-link">ravens@grimmwhimsy.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-instagram contact-icon"></i>
-                        <span class="contact-link">@grimmwhimsy</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-twitter contact-icon"></i>
-                        <span class="contact-link">@grimmwhimsy</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.matches('.menu-icon') && !event.target.closest('.dropdown-menu')) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Add sparkles
+        function addSparkles() {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                hero.appendChild(sparkle);
+            }
+        }
+        addSparkles();
+    </script>
 </body>
 </html>
-
