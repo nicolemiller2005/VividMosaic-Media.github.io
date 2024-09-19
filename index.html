@@ -3,271 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TransCinema Dreams</title>
+    <title>Cutesy Pro Remake</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=Pacifico&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
         :root {
-            --primary-color: #2D2D2D;
-            --accent-color: #F5A9B8;
-            --secondary-accent: #5BCEFA;
-            --text-color: #FFFFFF;
-            --menu-bg: rgba(45, 45, 45, 0.9);
+            --primary-color: #FF69B4;
+            --secondary-color: #FFC0CB;
+            --text-color: #333;
+            --background-color: #F5F5F7;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body, html {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--primary-color);
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            height: 100%;
-            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
-        
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url('/api/placeholder/1920/1080') no-repeat center center;
-            background-size: cover;
-            position: relative;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(245, 169, 184, 0.7), rgba(91, 206, 250, 0.7));
-        }
-        
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 0 20px;
-        }
-        
-        h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 4.5em;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .tagline {
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 1s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .cta-button:hover {
-            background-color: var(--secondary-accent);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-        }
-        
-        /* Navigation Styles */
-        .nav-container {
+
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             z-index: 1000;
-            padding: 20px;
-            background-color: var(--menu-bg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 10px 0;
         }
-        
-        .nav-container .logo {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.5em;
-            color: var(--accent-color);
-            text-decoration: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
         }
-        
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5em;
-            color: var(--accent-color);
-        }
-        
-        .nav-links {
-            float: right;
-        }
-        
-        .nav-links a {
+
+        nav a {
             color: var(--text-color);
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: 400;
+            margin: 0 15px;
+            font-weight: 300;
             transition: color 0.3s ease;
         }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
+
+        nav a:hover {
+            color: var(--primary-color);
         }
-        
-        /* Dropdown Menu Styles */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background-color: var(--menu-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        h1, h2 {
+            color: var(--primary-color);
+            font-weight: 700;
         }
-        
-        .dropdown-menu a {
-            display: block;
-            padding: 15px 20px;
+
+        .content {
+            background-color: #FFF;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 80px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
             color: var(--text-color);
-            text-decoration: none;
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid var(--secondary-color);
+        }
+
+        .cute-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        
-        .dropdown-menu a:hover {
-            background-color: rgba(245, 169, 184, 0.2);
-        }
-        
-        /* Cute Elements */
-        .sparkle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5A9B8'%3E%3Cpath d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.7;
-            animation: sparkle 2s ease-in-out infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
-            }
-            
-            .tagline {
-                font-size: 1.4em;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .menu-icon {
-                display: block;
-                float: right;
-            }
-            
-            .dropdown-menu.active {
-                display: block;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .button:hover {
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
 <body>
-    <nav class="nav-container">
-        <a href="#" class="logo">TransCinema Dreams</a>
-        <div class="menu-icon">☰</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="dropdown-menu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <a href="#" onclick="showPage('home')"><span class="cute-icon">🏠</span>Home</a>
+            <a href="#" onclick="showPage('about')"><span class="cute-icon">ℹ️</span>About</a>
+            <a href="#" onclick="showPage('directors')"><span class="cute-icon">🎬</span>Directors</a>
+            <a href="#" onclick="showPage('concept')"><span class="cute-icon">💡</span>Concept</a>
+            <a href="#" onclick="showPage('setting')"><span class="cute-icon">🏞️</span>Setting</a>
+            <a href="#" onclick="showPage('production')"><span class="cute-icon">🎨</span>Production</a>
+        </nav>
+    </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>TransCinema Dreams</h1>
-            <p class="tagline">Where identity meets imagination on screen</p>
-            <a href="#contact" class="cta-button">Start Your Journey</a>
+    <div class="container">
+        <div id="home" class="content">
+            <h1>Welcome to Our Cutesy Pro Remake</h1>
+            <p>Discover our unique vision that blends professionalism with adorable charm.</p>
+            <button class="button" onclick="showPage('about')">Learn More</button>
         </div>
-    </section>
+
+        <div id="about" class="content" style="display:none;">
+            <h2>About the Remake</h2>
+            <p>This is a remake that gives a distinct emotional feel, offering a sense of a sad and darker somber atmosphere, all wrapped in a cute package.</p>
+        </div>
+
+        <div id="directors" class="content" style="display:none;">
+            <h2>Meet Our Directors</h2>
+            <p>We'll bring in Tim Burton as the director, adding his unique gothic flair, while David Lanzenberg will handle the editing, ensuring a polished final product.</p>
+        </div>
+
+        <div id="concept" class="content" style="display:none;">
+            <h2>Our Concept</h2>
+            <p>Imagine if Tim Burton directed a Rambo movie with a Wednesday Addams vibe, but everything had an undercurrent of kawaii. The jungle transforms into a gothic, maze-like nightmare, filled with traps and eerie shadows, yet sprinkled with unexpectedly cute elements.</p>
+        </div>
+
+        <div id="setting" class="content" style="display:none;">
+            <h2>The Setting</h2>
+            <p>Picture an old hospital, now hidden by a growing forest, covered in thick vines and trees. Once bustling, it's now a quiet, rusty building with walls falling apart, being reclaimed by nature. Yet, amidst the decay, you might spot a family of adorable woodland creatures making it their home.</p>
+        </div>
+
+        <div id="production" class="content" style="display:none;">
+            <h2>Production Magic</h2>
+            <p>We're using cutting-edge technology to bring our vision to life. Adobe Photoshop will craft our still posters with precision, while Premiere Pro will add motion and excitement to our animated versions. The result? A perfect blend of professional quality and irresistible charm.</p>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 Cutesy Pro Remake Productions | Designed with 💖 and Professionalism</p>
+        </footer>
+    </div>
 
     <script>
-        const menuIcon = document.querySelector('.menu-icon');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-
-        menuIcon.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!event.target.matches('.menu-icon') && !event.target.closest('.dropdown-menu')) {
-                dropdownMenu.classList.remove('active');
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName('content');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
             }
-        });
-
-        // Add sparkles
-        function addSparkles() {
-            const hero = document.querySelector('.hero');
-            for (let i = 0; i < 20; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 2}s`;
-                hero.appendChild(sparkle);
-            }
+            document.getElementById(pageId).style.display = 'block';
         }
-        addSparkles();
     </script>
 </body>
 </html>
